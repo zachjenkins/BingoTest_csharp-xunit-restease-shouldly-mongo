@@ -39,7 +39,7 @@ namespace Bingo.RestEase.Test.Common
         {
             HttpClient = new HttpClient
             {
-                BaseAddress = new Uri(@"http://localhost:63301"),
+                BaseAddress = new Uri(@"http://localhost:5000"),
                 Timeout = TimeSpan.FromSeconds(2)
             };
         }
