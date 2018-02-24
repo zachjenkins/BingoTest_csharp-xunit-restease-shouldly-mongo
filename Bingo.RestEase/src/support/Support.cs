@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Bingo.RestEase.Support
 {
@@ -16,7 +17,8 @@ namespace Bingo.RestEase.Support
                 {
                     AttributesToIgnore = new List<Type>
                     {
-                        typeof(JsonIgnoreAttribute)
+                        typeof(JsonIgnoreAttribute),
+                        typeof(BsonIdAttribute)
                     }
                 }
             };

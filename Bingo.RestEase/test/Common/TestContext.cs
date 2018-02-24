@@ -3,13 +3,16 @@ using Bingo.RestEase.Services;
 using MongoDB.Driver;
 using RestEase;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 
 namespace Bingo.RestEase.Test.Common
 {
-    public class ServiceFixture : IDisposable
+    public class TestContext : IDisposable
     {
-        public ServiceFixture()
+        public List<Action> AfterTests = new List<Action>();
+
+        public TestContext()
         {
             InitializeMongo();
 
@@ -17,10 +20,10 @@ namespace Bingo.RestEase.Test.Common
 
             InitializeApiInterface();
         }
-
+        
         public void Dispose()
         {
-      
+            AfterTests?.ForEach(condition => condition.Invoke());
         }
 
         public void InitializeMongo()
@@ -41,7 +44,6 @@ namespace Bingo.RestEase.Test.Common
             };
         }
 
-       
         public void InitializeApiInterface()
         {
             ActivationsService = RestClient.For<IActivationsService>(HttpClient);

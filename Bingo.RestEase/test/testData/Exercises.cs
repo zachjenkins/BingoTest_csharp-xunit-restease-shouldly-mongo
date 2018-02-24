@@ -20,6 +20,13 @@ namespace Bingo.RestEase.Test.TestData
             ShortName = $"Random_{Utilities.GetRandomString()}"
         };
 
+        public static PostExerciseDto RandomPostExerciseDto => new PostExerciseDto
+        {
+            Name = $"Random_{Utilities.GetRandomString()}",
+            LongName = $"Random_{Utilities.GetRandomString()}",
+            ShortName = $"Random_{Utilities.GetRandomString()}"
+        };
+
         public static Exercise ContractExercise => new Exercise
         {
             Id = "012345678901234567894542",

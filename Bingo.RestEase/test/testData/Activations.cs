@@ -149,8 +149,9 @@ namespace Bingo.RestEase.Test.TestData
             }
         };
 
-        public static Activation RandomizedActivation => new Activation
+        public static Activation RandomContractActivation => new Activation
         {
+            Id = Utilities.GetRandomHexString(),
             ExerciseId = Utilities.GetRandomHexString(),
             MuscleId = Utilities.GetRandomHexString(),
             ForceOutputPercentage = Utilities.GetRandomInteger(2),
@@ -173,6 +174,31 @@ namespace Bingo.RestEase.Test.TestData
                 LactateProduction = Utilities.GetRandomInteger(2)
             }
         };
-        
+
+        public static PostActivationDto RandomContractPostActivationDto => new PostActivationDto
+        {
+            ExerciseId = Utilities.GetRandomHexString(),
+            MuscleId = Utilities.GetRandomHexString(),
+            ForceOutputPercentage = Utilities.GetRandomInteger(2),
+            RangeOfMotion = Utilities.GetRandomInteger(2),
+            RepetitionTempo = new PostRepetitionTempoDto
+            {
+                Type = "Tempo",
+                EccentricDuration = Utilities.GetRandomInteger(1),
+                ConcentricDuration = Utilities.GetRandomInteger(1)
+            },
+            Electromyography = new PostEmgResultDto
+            {
+                MeanEmg = Utilities.GetRandomInteger(2),
+                PeakEmg = Utilities.GetRandomInteger(2)
+            },
+            LactateProduction = new PostLactateResultDto
+            {
+                AerobicRespiration = Utilities.GetRandomInteger(2),
+                AnaerobicRespiration = Utilities.GetRandomInteger(2),
+                LactateProduction = Utilities.GetRandomInteger(2)
+            }
+        };
+
     }
 }

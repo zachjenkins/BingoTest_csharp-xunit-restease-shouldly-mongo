@@ -1,7 +1,12 @@
-﻿namespace Bingo.RestEase.Models.Response
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace Bingo.RestEase.Models.Response
 {
     public class Activation : BingoEntity
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string ExerciseId { get; set; }
         public string MuscleId { get; set; }

@@ -22,6 +22,25 @@ namespace Bingo.RestEase.Test.TestData
             RegionId = "123456789042767678589743"
         };
 
+        public static Muscle RandomContractMuscle => new Muscle
+        {
+            Id = Utilities.GetRandomHexString(),
+            Name = Utilities.GetRandomString(30),
+            LongName = Utilities.GetRandomString(60),
+            ShortName = Utilities.GetRandomString(20),
+            GroupId = Utilities.GetRandomHexString(),
+            RegionId = Utilities.GetRandomHexString()
+        };
+
+        public static PostMuscleDto RandomPostMuscleDto => new PostMuscleDto
+        {
+            Name = Utilities.GetRandomString(30),
+            LongName = Utilities.GetRandomString(60),
+            ShortName = Utilities.GetRandomString(20),
+            GroupId = Utilities.GetRandomHexString(),
+            RegionId = Utilities.GetRandomHexString()
+        };
+
         public static Muscle ContractMuscle2 => new Muscle
         {
             Id = "052343678961234567894578",

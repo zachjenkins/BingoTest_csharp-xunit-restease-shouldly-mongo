@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\models\" />
-    <Folder Include="src\services\" />
-    <Folder Include="src\support\" />
+    <Folder Include="src\Models\" />
+    <Folder Include="src\Services\" />
+    <Folder Include="src\Support\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,10 +1,14 @@
 ﻿using Bingo.RestEase.Support;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
 namespace Bingo.RestEase.Models.Response
 {
     public class Muscle : BingoEntity
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string ShortName { get; set; }
         public string Name { get; set; }
