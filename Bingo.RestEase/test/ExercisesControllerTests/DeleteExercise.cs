@@ -1,12 +1,13 @@
-﻿using Bingo.RestEase.Models.Response;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Bingo.RestEase.Models.Response;
 using Bingo.RestEase.Support;
 using Bingo.RestEase.Test.Common;
 using Bingo.RestEase.Test.TestData;
 using Shouldly;
-using System.Net;
 using Xunit;
 
-namespace Bingo.RestEase.Test
+namespace Bingo.RestEase.Test.ExercisesControllerTests
 {
     [Trait("Exercises", "Delete Exercise")]
     public class DeleteExercise : TestBase
@@ -27,7 +28,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldDeleteObjectAndReturnNoData204_WhenExerciseExists()
+        public async Task ShouldDeleteObjectAndReturnNoData204_WhenExerciseExists()
         {
             // Act
             var response = await _context.ExercisesService.DeleteExerciseById(_exerciseEntity.Id);
@@ -42,7 +43,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData204_WhenExerciseDoesNotExist()
+        public async Task ShouldReturnNoData204_WhenExerciseDoesNotExist()
         {
             // Act
             var response = await _context.ExercisesService.DeleteExerciseById(Utilities.GetRandomHexString());
@@ -56,7 +57,7 @@ namespace Bingo.RestEase.Test
         }
         
         [Fact]
-        public async void ShouldReturnNoData204_WhenNon24BitHexIdIsUsed()
+        public async Task ShouldReturnNoData204_WhenNon24BitHexIdIsUsed()
         {
             // Act
             var response = await _context.ExercisesService.DeleteExerciseById(Utilities.GetRandomString());

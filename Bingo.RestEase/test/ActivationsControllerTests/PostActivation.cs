@@ -1,11 +1,12 @@
-﻿using Bingo.RestEase.Support;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Bingo.RestEase.Support;
 using Bingo.RestEase.Test.Common;
 using Bingo.RestEase.Test.TestData;
 using Shouldly;
-using System.Net;
 using Xunit;
 
-namespace Bingo.RestEase.Test
+namespace Bingo.RestEase.Test.ActivationsControllerTests
 {
     [Trait("Activations", "Post Activation")]
     public class PostActivation: TestBase
@@ -18,7 +19,7 @@ namespace Bingo.RestEase.Test
         }
         
         [Fact]
-        public async void ShouldReturnCreatedActivation201_WhenActivationPostsSuccessfully()
+        public async Task ShouldReturnCreatedActivation201_WhenActivationPostsSuccessfully()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -38,7 +39,7 @@ namespace Bingo.RestEase.Test
 
         // This is useful for testing that the ToEntity() functions on the DTOs that are not required are handled correctly (null ref)
         [Fact]
-        public async void ShouldReturnCreatedActivation201_WhenOnlyRequiredFieldsAreUsed()
+        public async Task ShouldReturnCreatedActivation201_WhenOnlyRequiredFieldsAreUsed()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -61,7 +62,7 @@ namespace Bingo.RestEase.Test
         #region Required Fields
 
         [Fact]
-        public async void ShouldReturnRequiredFieldError400_WhenExerciseId_IsExcluded()
+        public async Task ShouldReturnRequiredFieldError400_WhenExerciseId_IsExcluded()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -78,7 +79,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnRequiredFieldError400_WhenMuscleId_IsExcluded()
+        public async Task ShouldReturnRequiredFieldError400_WhenMuscleId_IsExcluded()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -95,7 +96,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnRequiredFieldError400_WhenRepetitionTempo_IsExcluded()
+        public async Task ShouldReturnRequiredFieldError400_WhenRepetitionTempo_IsExcluded()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -112,7 +113,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnRequiredFieldError400_WhenRepetitionTempoType_IsExcluded()
+        public async Task ShouldReturnRequiredFieldError400_WhenRepetitionTempoType_IsExcluded()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -129,7 +130,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnRequiredFieldError400_WhenElectromyographyMeanEmg_IsExcluded()
+        public async Task ShouldReturnRequiredFieldError400_WhenElectromyographyMeanEmg_IsExcluded()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -146,7 +147,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnRequiredFieldError400_WhenElectromyographyPeakEmg_IsExcluded()
+        public async Task ShouldReturnRequiredFieldError400_WhenElectromyographyPeakEmg_IsExcluded()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -169,7 +170,7 @@ namespace Bingo.RestEase.Test
         [Fact]
         [InlineData(23)]
         [InlineData(25)]
-        public async void ShouldReturnFieldLengthError400_WhenExerciseId_IsNot24BitHex()
+        public async Task ShouldReturnFieldLengthError400_WhenExerciseId_IsNot24BitHex()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -188,7 +189,7 @@ namespace Bingo.RestEase.Test
         [Fact]
         [InlineData(23)]
         [InlineData(25)]
-        public async void ShouldReturnFieldLengthError400_WhenMuscleId_IsNot24BitHex()
+        public async Task ShouldReturnFieldLengthError400_WhenMuscleId_IsNot24BitHex()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -211,7 +212,7 @@ namespace Bingo.RestEase.Test
         [Theory]
         [InlineData(-1)]
         [InlineData(101)]
-        public async void ShouldReturnFieldRangeError400_WhenRangeOfMotion_IsNotZeroToOneHundred(double value)
+        public async Task ShouldReturnFieldRangeError400_WhenRangeOfMotion_IsNotZeroToOneHundred(double value)
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -230,7 +231,7 @@ namespace Bingo.RestEase.Test
         [Theory]
         [InlineData(-1)]
         [InlineData(101)]
-        public async void ShouldReturnFieldRangeError400_WhenForcePercentageOutput_IsNotZeroToOneHundred(double value)
+        public async Task ShouldReturnFieldRangeError400_WhenForcePercentageOutput_IsNotZeroToOneHundred(double value)
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -247,7 +248,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldRangeError400_WhenRepetitionTempoDuration_IsLessThanZero()
+        public async Task ShouldReturnFieldRangeError400_WhenRepetitionTempoDuration_IsLessThanZero()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -264,7 +265,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldRangeError400_WhenRepetitionTempoConcentricDuration_IsLessThanZero()
+        public async Task ShouldReturnFieldRangeError400_WhenRepetitionTempoConcentricDuration_IsLessThanZero()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -281,7 +282,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldRangeError400_WhenRepetitionTempoEccentricDuration_IsLessThanZero()
+        public async Task ShouldReturnFieldRangeError400_WhenRepetitionTempoEccentricDuration_IsLessThanZero()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -298,7 +299,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldRangeError400_WhenRepetitionTempoIsometricDuration_IsLessThanZero()
+        public async Task ShouldReturnFieldRangeError400_WhenRepetitionTempoIsometricDuration_IsLessThanZero()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -315,7 +316,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldRangeError400_WhenElectromyographyMeanEmg_IsLessThanZero()
+        public async Task ShouldReturnFieldRangeError400_WhenElectromyographyMeanEmg_IsLessThanZero()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -332,7 +333,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldRangeError400_WhenElectromyographyPeakEmg_IsLessThanZero()
+        public async Task ShouldReturnFieldRangeError400_WhenElectromyographyPeakEmg_IsLessThanZero()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -349,7 +350,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldRangeError400_WhenLactateProduction_IsLessThanZero()
+        public async Task ShouldReturnFieldRangeError400_WhenLactateProduction_IsLessThanZero()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -366,7 +367,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldRangeError400_WhenLactateAerobicRespiration_IsLessThanZero()
+        public async Task ShouldReturnFieldRangeError400_WhenLactateAerobicRespiration_IsLessThanZero()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -383,7 +384,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldRangeError400_WhenLactateAnaerobicRespiration_IsLessThanZero()
+        public async Task ShouldReturnFieldRangeError400_WhenLactateAnaerobicRespiration_IsLessThanZero()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;

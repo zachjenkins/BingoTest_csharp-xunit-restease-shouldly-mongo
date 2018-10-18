@@ -1,12 +1,13 @@
-﻿using Bingo.RestEase.Models.Response;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Bingo.RestEase.Models.Response;
 using Bingo.RestEase.Support;
 using Bingo.RestEase.Test.Common;
 using Bingo.RestEase.Test.TestData;
 using Shouldly;
-using System.Net;
 using Xunit;
 
-namespace Bingo.RestEase.Test
+namespace Bingo.RestEase.Test.MusclesControllerTests
 {
     [Trait("Muscles", "Delete Muscle")]
     public class DeleteMuscle: TestBase
@@ -27,7 +28,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldDeleteObjectAndReturnNoData204_WhenMuscleExists()
+        public async Task ShouldDeleteObjectAndReturnNoData204_WhenMuscleExists()
         {
             // Act
             var response = await _context.MusclesService.DeleteMuscleById(_muscleEntity.Id);
@@ -42,7 +43,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData204_WhenMuscleDoesNotExist()
+        public async Task ShouldReturnNoData204_WhenMuscleDoesNotExist()
         {
             // Act
             var response = await _context.MusclesService.DeleteMuscleById(Utilities.GetRandomHexString());
@@ -56,7 +57,7 @@ namespace Bingo.RestEase.Test
         }
         
         [Fact]
-        public async void ShouldReturnNoData204_WhenNon24BitHexIdIsUsed()
+        public async Task ShouldReturnNoData204_WhenNon24BitHexIdIsUsed()
         {
             // Act
             var response = await _context.MusclesService.DeleteMuscleById(Utilities.GetRandomString());

@@ -1,12 +1,13 @@
-﻿using Bingo.RestEase.Models.Response;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Bingo.RestEase.Models.Response;
 using Bingo.RestEase.Support;
 using Bingo.RestEase.Test.Common;
 using Bingo.RestEase.Test.TestData;
 using Shouldly;
-using System.Net;
 using Xunit;
 
-namespace Bingo.RestEase.Test
+namespace Bingo.RestEase.Test.ExercisesControllerTests
 {
     [Trait("Exercises", "Post Activation to Exercise")]
     public class PostActivationToExercise : TestBase
@@ -27,7 +28,7 @@ namespace Bingo.RestEase.Test
         }
         
         [Fact]
-        public async void ShouldReturnCreatedActivation201_WhenActivationPostsSuccessfully()
+        public async Task ShouldReturnCreatedActivation201_WhenActivationPostsSuccessfully()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;
@@ -47,7 +48,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenExerciseDoesNotExist()
+        public async Task ShouldReturnNoData404_WhenExerciseDoesNotExist()
         {
             // Arrange
             var postDto = Activations.RandomContractPostActivationDto;

@@ -48,7 +48,7 @@ namespace Bingo.RestEase.Support
                 .Where(val => val == null)
                 .ToList();
 
-            result.Count.ShouldBe(0, $"{typeof(object)} contains empty values: \n{obj.ToString()}");
+            result.Count.ShouldBe(0, $"{typeof(object)} contains empty values: \n{obj}");
         }
 
         public static void ShouldNotHaveNullDataMembersExcept<T>(this object obj, params string[] propertyNames)
@@ -58,7 +58,7 @@ namespace Bingo.RestEase.Support
             foreach(System.Reflection.PropertyInfo prop in properties)
             {
                 if (!propertyNames.Contains(prop.Name))
-                    prop.GetValue(obj, null).ShouldNotBeNull($"{typeof(object)} contains empty values: \n{obj.ToString()}");           
+                    prop.GetValue(obj, null).ShouldNotBeNull($"{typeof(object)} contains empty values: \n{obj}");           
             }
         }
     }

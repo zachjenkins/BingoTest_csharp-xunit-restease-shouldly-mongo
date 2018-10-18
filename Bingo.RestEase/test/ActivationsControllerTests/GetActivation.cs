@@ -1,12 +1,13 @@
-﻿using Bingo.RestEase.Models.Response;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Bingo.RestEase.Models.Response;
 using Bingo.RestEase.Support;
 using Bingo.RestEase.Test.Common;
 using Bingo.RestEase.Test.TestData;
 using Shouldly;
-using System.Net;
 using Xunit;
 
-namespace Bingo.RestEase.Test
+namespace Bingo.RestEase.Test.ActivationsControllerTests
 {
     [Trait("Activations", "Get Activation")]
     public class GetActivation : TestBase
@@ -27,7 +28,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnExpectedActivationWith200_WhenActivationExists()
+        public async Task ShouldReturnExpectedActivationWith200_WhenActivationExists()
         {
             // Act
             var response = await _context.ActivationsService.GetActivationById(_activationEntity.Id);
@@ -41,7 +42,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenActivationDoesNotExist()
+        public async Task ShouldReturnNoData404_WhenActivationDoesNotExist()
         {
             // Act
             var response = await _context.ActivationsService.GetActivationById(Utilities.GetRandomHexString());
@@ -54,7 +55,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenNon24BitHexIsUsed()
+        public async Task ShouldReturnNoData404_WhenNon24BitHexIsUsed()
         {
             // Act
             var response = await _context.ActivationsService.GetActivationById(Utilities.GetRandomString());

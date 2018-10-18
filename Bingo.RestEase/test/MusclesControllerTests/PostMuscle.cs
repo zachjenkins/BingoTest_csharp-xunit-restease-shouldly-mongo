@@ -1,11 +1,12 @@
-﻿using Bingo.RestEase.Support;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Bingo.RestEase.Support;
 using Bingo.RestEase.Test.Common;
 using Bingo.RestEase.Test.TestData;
 using Shouldly;
-using System.Net;
 using Xunit;
 
-namespace Bingo.RestEase.Test
+namespace Bingo.RestEase.Test.MusclesControllerTests
 {
     [Trait("Muscles", "Post Muscle")]
     public class PostMuscle: TestBase
@@ -18,7 +19,7 @@ namespace Bingo.RestEase.Test
         }
         
         [Fact]
-        public async void ShouldReturnCreatedMuscle201_WhenMusclePostsSuccessfully()
+        public async Task ShouldReturnCreatedMuscle201_WhenMusclePostsSuccessfully()
         {
             // Arrange
             var postDto = Muscles.RandomPostMuscleDto;
@@ -39,7 +40,7 @@ namespace Bingo.RestEase.Test
         #region Required Fields
 
         [Fact]
-        public async void ShouldReturnRequiredFieldsError400_WhenNameIsExcluded()
+        public async Task ShouldReturnRequiredFieldsError400_WhenNameIsExcluded()
         {
             // Arrange
             var postDto = Muscles.RandomPostMuscleDto;
@@ -56,7 +57,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnRequiredFieldsError400_WhenShortNameIsExcluded()
+        public async Task ShouldReturnRequiredFieldsError400_WhenShortNameIsExcluded()
         {
             // Arrange
             var postDto = Muscles.RandomPostMuscleDto;
@@ -73,7 +74,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnRequiredFieldsError400_WhenLongNameIsExcluded()
+        public async Task ShouldReturnRequiredFieldsError400_WhenLongNameIsExcluded()
         {
             // Arrange
             var postDto = Muscles.RandomPostMuscleDto;
@@ -94,7 +95,7 @@ namespace Bingo.RestEase.Test
         #region Field Length
 
         [Fact]
-        public async void ShouldReturnFieldLengthError400_WhenNameIsGreaterThan30()
+        public async Task ShouldReturnFieldLengthError400_WhenNameIsGreaterThan30()
         {
             // Arrange
             var postDto = Muscles.RandomPostMuscleDto;
@@ -112,7 +113,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldLengthError400_WhenShortNameIsGreaterThan20()
+        public async Task ShouldReturnFieldLengthError400_WhenShortNameIsGreaterThan20()
         {
             // Arrange
             var postDto = Muscles.RandomPostMuscleDto;
@@ -130,7 +131,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnFieldLengthError400_WhenLongNameIsGreaterThan60()
+        public async Task ShouldReturnFieldLengthError400_WhenLongNameIsGreaterThan60()
         {
             // Arrange
             var postDto = Muscles.RandomPostMuscleDto;

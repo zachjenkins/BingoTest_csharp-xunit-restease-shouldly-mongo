@@ -1,12 +1,13 @@
-﻿using Bingo.RestEase.Models.Response;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Bingo.RestEase.Models.Response;
 using Bingo.RestEase.Support;
 using Bingo.RestEase.Test.Common;
 using Bingo.RestEase.Test.TestData;
 using Shouldly;
-using System.Net;
 using Xunit;
 
-namespace Bingo.RestEase.Test
+namespace Bingo.RestEase.Test.ExercisesControllerTests
 {
     [Trait("Exercises", "Get Activation From Exercise")]
     public class GetActivationFromExercise : TestBase
@@ -32,7 +33,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnExpectedActivation200_WhenExerciseAndActivationExist()
+        public async Task ShouldReturnExpectedActivation200_WhenExerciseAndActivationExist()
         {
             // Act
             var response = await _context.ExercisesService.GetActivationForExercise(_exerciseEntity.Id, _activationEntity.Id);
@@ -46,7 +47,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenEntitiesAreNotLinked_ByExerciseId()
+        public async Task ShouldReturnNoData404_WhenEntitiesAreNotLinked_ByExerciseId()
         {
             // Arrange
             var exercise = Exercises.RandomContractExercise;
@@ -67,7 +68,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenExerciseDoesNotExist()
+        public async Task ShouldReturnNoData404_WhenExerciseDoesNotExist()
         {
             // Act
             var response = await _context.ExercisesService.GetActivationForExercise(Utilities.GetRandomHexString(), _activationEntity.Id);
@@ -80,7 +81,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenActivationDoesNotExist()
+        public async Task ShouldReturnNoData404_WhenActivationDoesNotExist()
         {
             // Act
             var response = await _context.ExercisesService.GetActivationForExercise(_exerciseEntity.Id, Utilities.GetRandomHexString());
@@ -93,7 +94,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenExerciseIdIsNon24BitHex()
+        public async Task ShouldReturnNoData404_WhenExerciseIdIsNon24BitHex()
         {
             // Act
             var response = await _context.ExercisesService.GetActivationForExercise(Utilities.GetRandomString(24), _activationEntity.Id);
@@ -106,7 +107,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenActivationIdIsNon24BitHex()
+        public async Task ShouldReturnNoData404_WhenActivationIdIsNon24BitHex()
         {
             // Act
             var response = await _context.ExercisesService.GetActivationForExercise(_exerciseEntity.Id, Utilities.GetRandomString(24));

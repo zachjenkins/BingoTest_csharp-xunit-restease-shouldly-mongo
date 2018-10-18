@@ -1,12 +1,13 @@
-﻿using Bingo.RestEase.Models.Response;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Bingo.RestEase.Models.Response;
 using Bingo.RestEase.Support;
 using Bingo.RestEase.Test.Common;
 using Bingo.RestEase.Test.TestData;
 using Shouldly;
-using System.Net;
 using Xunit;
 
-namespace Bingo.RestEase.Test
+namespace Bingo.RestEase.Test.ExercisesControllerTests
 {
     [Trait("Exercises", "Get Exercise")]
     public class GetExercise : TestBase
@@ -27,7 +28,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnExpectedExerciseWith200_WhenExerciseExists()
+        public async Task ShouldReturnExpectedExerciseWith200_WhenExerciseExists()
         {
             // Act
             var response = await _context.ExercisesService.GetExerciseById(_exerciseEntity.Id);
@@ -41,7 +42,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenExerciseDoesNotExist()
+        public async Task ShouldReturnNoData404_WhenExerciseDoesNotExist()
         {
             // Act
             var response = await _context.ExercisesService.GetExerciseById(Utilities.GetRandomHexString());
@@ -54,7 +55,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData404_WhenNon24BitHexIsUsed()
+        public async Task ShouldReturnNoData404_WhenNon24BitHexIsUsed()
         {
             // Act
             var response = await _context.ExercisesService.GetExerciseById(Utilities.GetRandomString());

@@ -1,12 +1,13 @@
-﻿using Bingo.RestEase.Models.Response;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Bingo.RestEase.Models.Response;
 using Bingo.RestEase.Support;
 using Bingo.RestEase.Test.Common;
 using Bingo.RestEase.Test.TestData;
 using Shouldly;
-using System.Net;
 using Xunit;
 
-namespace Bingo.RestEase.Test
+namespace Bingo.RestEase.Test.ActivationsControllerTests
 {
     [Trait("Activations", "Delete Activation")]
     public class DeleteActivation: TestBase
@@ -27,7 +28,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldDeleteObjectAndReturnNoData204_WhenActivationExists()
+        public async Task ShouldDeleteObjectAndReturnNoData204_WhenActivationExists()
         {
             // Act
             var response = await _context.ActivationsService.DeleteActivationById(_activationEntity.Id);
@@ -42,7 +43,7 @@ namespace Bingo.RestEase.Test
         }
 
         [Fact]
-        public async void ShouldReturnNoData204_WhenActivationDoesNotExist()
+        public async Task ShouldReturnNoData204_WhenActivationDoesNotExist()
         {
             // Act
             var response = await _context.ActivationsService.DeleteActivationById(Utilities.GetRandomHexString());
@@ -56,7 +57,7 @@ namespace Bingo.RestEase.Test
         }
         
         [Fact]
-        public async void ShouldReturnNoData204_WhenNon24BitHexIdIsUsed()
+        public async Task ShouldReturnNoData204_WhenNon24BitHexIdIsUsed()
         {
             // Act
             var response = await _context.ActivationsService.DeleteActivationById(Utilities.GetRandomString());
